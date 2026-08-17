@@ -29,7 +29,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Sarathi Design System — shadcn/ui-inspired
+   Sarathi Design System - shadcn/ui-inspired
    Zinc neutrals · Violet accent · Sharp borders · Clean typography
    ────────────────────────────────────────────────────────────────────────── */
 
@@ -45,7 +45,7 @@
   --desktop-safe-top: 0px;
   --desktop-safe-bottom: 0px;
 
-  /* ── Brand Accent — Violet ── */
+  /* ── Brand Accent - Violet ── */
   --color-primary:       #7c3aed;
   --color-primary-hover: #6d28d9;
 
@@ -63,7 +63,7 @@
   --color-traffic-yellow: #ffbd2e;
   --color-traffic-green:  #27c93f;
 
-  /* ── Light Theme — zinc-based, shadcn-style ── */
+  /* ── Light Theme - zinc-based, shadcn-style ── */
   --color-bg:          #ffffff;
   --color-bg-alt:      #fafafa;
   --color-bg-primary:  #ffffff;
@@ -121,7 +121,7 @@
 .dark {
   color-scheme: dark;
 
-  /* ── Dark Theme — zinc-950 base, shadcn-style ── */
+  /* ── Dark Theme - zinc-950 base, shadcn-style ── */
   --color-bg:          #09090b;
   --color-bg-alt:      #09090b;
   --color-bg-primary:  #09090b;
@@ -152,7 +152,7 @@
   --color-fd-accent-foreground:  #fafafa;
   --color-fd-ring:               #8b5cf6;
 
-  /* ── Shadows — dark ── */
+  /* ── Shadows - dark ── */
   --shadow-soft:     0 1px 2px rgba(0,0,0,0.5);
   --shadow-warm:     0 2px 4px rgba(0,0,0,0.5);
   --shadow-elevated: 0 8px 16px rgba(0,0,0,0.6);
@@ -215,7 +215,7 @@
   --shadow-warm:     var(--shadow-warm);
   --shadow-elevated: var(--shadow-elevated);
 
-  /* Font — Geist with system fallback */
+  /* Font - Geist with system fallback */
   --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "Geist Mono", "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", monospace;
 
@@ -279,7 +279,7 @@ body.electron-macos {
   color: var(--color-primary);
 }
 
-/* Global custom scrollbar — thin, minimal, theme-aware */
+/* Global custom scrollbar - thin, minimal, theme-aware */
 *::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -303,7 +303,7 @@ body.electron-macos {
   background: transparent;
 }
 
-/* Dark theme scrollbar — slightly brighter thumb */
+/* Dark theme scrollbar - slightly brighter thumb */
 .dark *::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.08);
 }
@@ -500,7 +500,7 @@ select option {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RTL (Right-to-Left) Compatibility — fixes #7680
+   RTL (Right-to-Left) Compatibility - fixes #7680
    ═══════════════════════════════════════════════════════════════ */
 html[dir="rtl"] .text-left { text-align: start; }
 html[dir="rtl"] .text-right { text-align: end; }
@@ -587,7 +587,7 @@ html[dir="rtl"] :where(.material-symbols-outlined, .traffic-lights, .react-flow)
    shadcn/ui-inspired Component Utilities
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Card — clean border + subtle bg ── */
+/* ── Card - clean border + subtle bg ── */
 .ui-card {
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
@@ -638,7 +638,7 @@ html[dir="rtl"] :where(.material-symbols-outlined, .traffic-lights, .react-flow)
   border-color: color-mix(in srgb, var(--color-error) 25%, transparent);
 }
 
-/* ── Sidebar refinements — sharper, zinc-style ── */
+/* ── Sidebar refinements - sharper, zinc-style ── */
 .sidebar-item {
   border-radius: 6px;
   transition: background-color 0.1s ease, color 0.1s ease;
@@ -658,7 +658,7 @@ html[dir="rtl"] :where(.material-symbols-outlined, .traffic-lights, .react-flow)
   margin: 0;
 }
 
-/* ── Muted section label — shadcn style ── */
+/* ── Muted section label - shadcn style ── */
 .ui-section-label {
   font-size: 11px;
   font-weight: 600;
@@ -667,7 +667,7 @@ html[dir="rtl"] :where(.material-symbols-outlined, .traffic-lights, .react-flow)
   color: var(--color-text-muted);
 }
 
-/* ── Code / mono label — used in endpoint display ── */
+/* ── Code / mono label - used in endpoint display ── */
 .ui-mono {
   font-family: var(--font-mono);
   font-size: 12px;

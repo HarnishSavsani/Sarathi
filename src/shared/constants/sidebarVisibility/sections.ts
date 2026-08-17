@@ -216,22 +216,6 @@ const TOOLS_GROUP: SidebarItemGroup = {
   titleFallback: "Tools",
   items: [
     {
-      id: "conductor",
-      href: "/dashboard/conductor",
-      i18nKey: "conductor",
-      subtitleKey: "conductorSubtitle",
-      icon: "account_tree",
-      labelFallback: "Conductor",
-      subtitleFallback: "CLI-agent fleet",
-    },
-    {
-      id: "agent-bridge",
-      href: "/dashboard/tools/agent-bridge",
-      i18nKey: "agentBridge",
-      subtitleKey: "agentBridgeSubtitle",
-      icon: "link",
-    },
-    {
       id: "traffic-inspector",
       href: "/dashboard/tools/traffic-inspector",
       i18nKey: "trafficInspector",

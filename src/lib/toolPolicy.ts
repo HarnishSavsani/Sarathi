@@ -1,5 +1,5 @@
 /**
- * Tool-Calling Policy — L-4
+ * Tool-Calling Policy - L-4
  *
  * Allowlist/denylist for tool (function) calling in LLM requests.
  * Controls which tool names can be invoked, preventing dangerous
@@ -85,7 +85,7 @@ export function evaluateToolPolicy(toolNames: string[]): ToolPolicyResult {
   if (mode === "allowlist") {
     const allowlist = _runtimeAllowlist || parseList("TOOL_ALLOWLIST");
     if (allowlist.size === 0) {
-      return { allowed: true, denied: [], reason: "Allowlist is empty — all tools permitted" };
+      return { allowed: true, denied: [], reason: "Allowlist is empty - all tools permitted" };
     }
 
     const denied = normalizedNames.filter((name) => !allowlist.has(name));
