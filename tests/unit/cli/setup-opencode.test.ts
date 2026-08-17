@@ -1,0 +1,87 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { parse } from "jsonc-parser";
+import {
+  postProcessOpencodeConfig,
+  resolveOpencodeTarget,
+} from "../../../bin/cli/commands/setup-opencode.mjs";
+
+const RAW = JSON.stringify({
+  $schema: "https://opencode.ai/config.json",
+  provider: {
+    sarathi: {
+      name: "Sarathi",
+      npm: "@ai-sdk/openai-compatible",
+      options: { baseURL: "http://vps:20128/v1", apiKey: "sk-secret-literal" },
+      models: {
+        "glm/glm-5.2": { name: "glm/glm-5.2", limit: { context: 131072, output: 32768 } },
+        "kmc/kimi-k2.7": { name: "kmc/kimi-k2.7", limit: { context: 131072 } },
+        "openai/gpt-4o": { name: "openai/gpt-4o", limit: { context: 128000 } },
+      },
+    },
+  },
+});
+
+test("postProcessOpencodeConfig replaces the literal API key with an env ref (no secret on disk)", () => {
+  const { json } = postProcessOpencodeConfig(RAW);
+  assert.equal(json.includes("sk-secret-literal"), false);
+  const cfg = JSON.parse(json);
+  assert.equal(cfg.provider.sarathi.options.apiKey, "{env:SARATHI_API_KEY}");
+  assert.equal(cfg.provider.sarathi.options.baseURL, "http://vps:20128/v1");
+});
+
+test("postProcessOpencodeConfig keeps all models by default", () => {
+  const { modelCount } = postProcessOpencodeConfig(RAW);
+  assert.equal(modelCount, 3);
+});
+
+test("postProcessOpencodeConfig --only filters the model map by substring", () => {
+  const { json, modelCount } = postProcessOpencodeConfig(RAW, { only: ["glm", "kimi"] });
+  const cfg = JSON.parse(json);
+  assert.equal(modelCount, 2);
+  assert.ok(cfg.provider.sarathi.models["glm/glm-5.2"]);
+  assert.ok(cfg.provider.sarathi.models["kmc/kimi-k2.7"]);
+  assert.equal("openai/gpt-4o" in cfg.provider.sarathi.models, false);
+});
+
+test("postProcessOpencodeConfig preserves $schema, provider name and npm", () => {
+  const { json } = postProcessOpencodeConfig(RAW);
+  const cfg = JSON.parse(json);
+  assert.equal(cfg.$schema, "https://opencode.ai/config.json");
+  assert.equal(cfg.provider.sarathi.npm, "@ai-sdk/openai-compatible");
+});
+
+test("postProcessOpencodeConfig preserves JSONC comments outside managed fields", () => {
+  const rawJsonc = `{
+    // top-level user comment
+    "provider": {
+      "custom": {
+        // nested provider comment
+        "npm": "@ai-sdk/custom",
+      },
+      "sarathi": {
+        "options": { "apiKey": "sk-secret-literal" },
+        "models": { "openai/gpt-4o": { "name": "GPT-4o" } },
+      },
+    },
+  }`;
+
+  const { json, modelCount } = postProcessOpencodeConfig(rawJsonc);
+
+  assert.match(json, /\/\/ top-level user comment/);
+  assert.match(json, /\/\/ nested provider comment/);
+  const config = parse(json);
+  assert.equal(config.provider.custom.npm, "@ai-sdk/custom");
+  assert.equal(config.provider.sarathi.options.apiKey, "{env:SARATHI_API_KEY}");
+  assert.equal(modelCount, 1);
+});
+
+test("resolveOpencodeTarget: --remote wins and trailing slashes are trimmed", () => {
+  const { baseUrl } = resolveOpencodeTarget({ remote: "http://vps:20128/" });
+  assert.equal(baseUrl, "http://vps:20128");
+});
+
+test("resolveOpencodeTarget: explicit --api-key wins", () => {
+  const { apiKey } = resolveOpencodeTarget({ remote: "http://x:20128", apiKey: "sk-explicit" });
+  assert.equal(apiKey, "sk-explicit");
+});

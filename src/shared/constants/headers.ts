@@ -1,0 +1,18 @@
+export const SARATHI_RESPONSE_HEADERS = {
+  cache: "X-Sarathi-Cache",
+  cacheHit: "X-Sarathi-Cache-Hit",
+  cacheLatency: "X-Sarathi-Cache-Latency",
+  compression: "X-Sarathi-Compression",
+  costSaved: "X-Sarathi-Cost-Saved",
+  decision: "X-Sarathi-Decision",
+  fallbackAttempts: "X-Sarathi-Fallback-Attempts",
+  latencyMs: "X-Sarathi-Latency-Ms",
+  model: "X-Sarathi-Model",
+  progress: "X-Sarathi-Progress",
+  provider: "X-Sarathi-Provider",
+  requestId: "X-Sarathi-Request-Id",
+  responseCost: "X-Sarathi-Response-Cost",
+  tokensIn: "X-Sarathi-Tokens-In",
+  tokensOut: "X-Sarathi-Tokens-Out",
+  version: "X-Sarathi-Version",
+} as const;

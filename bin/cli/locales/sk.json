@@ -1,0 +1,32 @@
+{
+  "common": {
+    "error": "Chyba: {message}",
+    "serverOffline": "Server Sarathi je offline. Spustite: sarathi serve",
+    "authRequired": "Vyžaduje sa overenie. Nastavte SARATHI_API_KEY alebo spustite: sarathi setup",
+    "rateLimited": "Prekročený limit požiadaviek. Skúste za {seconds}s.",
+    "timeout": "Požiadavka vypršala po {ms}ms.",
+    "success": "Hotovo.",
+    "yes": "áno",
+    "no": "nie",
+    "confirm": "Ste si istí? (áno/nie)",
+    "dryRun": "[simulácia] by vykonalo: {action}",
+    "cancelled": "Zrušené.",
+    "jsonOpt": "Výstup ako JSON",
+    "yesOpt": "Preskočiť potvrdenie"
+  },
+  "program": {
+    "description": "Sarathi — Inteligentný AI router s automatickým prepínaním",
+    "version": "Vypísať verziu a skončiť",
+    "output": "Formát výstupu (table, json, jsonl, csv)",
+    "quiet": "Potlačiť nepodstatný výstup",
+    "no_color": "Zakázať farebný výstup",
+    "timeout": "Časový limit HTTP požiadaviek v milisekundách",
+    "api_key": "API kľúč pre server Sarathi",
+    "base_url": "Základná URL servera Sarathi",
+    "context": "Kontext/profil servera pre tento príkaz",
+    "lang": "Nastaviť jazyk zobrazenia CLI (prepíše SARATHI_LANG)"
+  },
+  "redis": {
+    "description": "Spustiť miestny kontajner Redis jedným kliknutím (Podman alebo Docker) na ukladanie do vyrovnávacej pamäte a sledovanie kvót Sarathi"
+  }
+}

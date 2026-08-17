@@ -1,0 +1,7 @@
+{
+  "name": "@sarathi/open-sse",
+  "version": "3.8.50",
+  "description": "Sarathi streaming engine — handles provider dispatch, protocol translation, and SSE streaming",
+  "type": "module",
+  "private": true
+}
