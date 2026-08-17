@@ -671,13 +671,6 @@ const CONFIGURATION_ITEMS: readonly SidebarItemDefinition[] = [
     icon: "tune",
   },
   {
-    id: "settings-appearance",
-    href: "/dashboard/settings/appearance",
-    i18nKey: "settingsAppearance",
-    subtitleKey: "settingsAppearanceSubtitle",
-    icon: "palette",
-  },
-  {
     id: "settings-ai",
     href: "/dashboard/settings/ai",
     i18nKey: "settingsAi",

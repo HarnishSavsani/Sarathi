@@ -28,6 +28,7 @@ import { ROUTING_STRATEGIES } from "@/shared/constants/routingStrategies";
 import {
   COMBO_BUILDER_AUTO_CONNECTION,
   COMBO_BUILDER_STAGES,
+  ComboBuilderStage,
   addAllGlobalSearchMatches,
   addGlobalModelStep,
   buildGlobalModelList,
@@ -50,8 +51,7 @@ import {
 } from "@/lib/combos/builderDraft";
 import { normalizeComboConfigMode } from "@/shared/constants/comboConfigMode";
 import AutoComboCatalog from "./AutoComboCatalog";
-import KimiComboPresetCard from "./KimiComboPresetCard";
-import { KIMI_CODING_PRESET, hasKimiCodingPreset } from "./kimiComboPreset";
+
 import BuilderIntelligentStep from "./BuilderIntelligentStep";
 import IntelligentComboPanel from "./IntelligentComboPanel";
 import {
@@ -81,12 +81,13 @@ const STRATEGY_OPTIONS = ROUTING_STRATEGIES.map((strategy) => ({
   icon: strategy.icon,
 }));
 
-const STRATEGY_LABEL_FALLBACK = {
+const STRATEGY_LABEL_FALLBACK: Record<string, string> = {
   "context-relay": "Context Relay",
   "reset-aware": "Reset-Aware RR",
 };
 
-const STRATEGY_DESC_FALLBACK = {
+const STRATEGY_DESC_FALLBACK: Record<string, string> = {
+  priority: "Sequential fallback: tries model 1 first, then 2, etc.",
   "context-relay":
     "Priority-style routing with automatic context handoffs when account rotation happens.",
   "reset-aware":
@@ -223,7 +224,7 @@ function secondsInputToOptionalMs(value, maxSeconds = 86400) {
   return Math.min(maxSeconds, Math.round(seconds)) * MS_PER_SECOND;
 }
 
-function sanitizeComboRuntimeConfig(config) {
+function sanitizeComboRuntimeConfig(config: any): Record<string, any> {
   if (!config || typeof config !== "object") return {};
   return Object.fromEntries(
     Object.entries(config).filter(
@@ -374,7 +375,12 @@ const STRATEGY_RECOMMENDATIONS_FALLBACK = {
 };
 
 const COMBO_USAGE_GUIDE_STORAGE_KEY = "sarathi:combos:hide-usage-guide";
-const COMBO_FORM_STAGE_META = [
+const COMBO_FORM_STAGE_META: {
+  id: ComboBuilderStage;
+  fallbackLabel: string;
+  fallbackDescription: string;
+  icon: string;
+}[] = [
   {
     id: "basics",
     fallbackLabel: "Basics",
@@ -739,7 +745,7 @@ export default function CombosPage() {
   const [providerNodes, setProviderNodes] = useState([]);
   const [showUsageGuide, setShowUsageGuide] = useState(true);
   const [recentlyCreatedCombo, setRecentlyCreatedCombo] = useState("");
-  const [creatingKimiPreset, setCreatingKimiPreset] = useState(false);
+
   const [comboDragIndex, setComboDragIndex] = useState(null);
   const [comboDragOverIndex, setComboDragOverIndex] = useState(null);
   const [savingComboOrder, setSavingComboOrder] = useState(false);
@@ -908,18 +914,6 @@ export default function CombosPage() {
     };
 
     await handleCreate(data);
-  };
-
-  // Kimi Coding preset (2026-07 partnership) — one-click create, mirrors
-  // handleDuplicate's directness (no separate confirmation modal). See
-  // KimiComboPresetCard.tsx for why this bypasses the combo builder wizard.
-  const handleCreateKimiPreset = async () => {
-    setCreatingKimiPreset(true);
-    try {
-      await handleCreate(KIMI_CODING_PRESET);
-    } finally {
-      setCreatingKimiPreset(false);
-    }
   };
 
   const handleTestCombo = async (combo) => {
@@ -1104,11 +1098,7 @@ export default function CombosPage() {
 
       <AutoComboCatalog />
 
-      <KimiComboPresetCard
-        alreadyCreated={hasKimiCodingPreset(combos)}
-        creating={creatingKimiPreset}
-        onCreate={handleCreateKimiPreset}
-      />
+
 
       {showUsageGuide && (
         <ComboUsageGuide
@@ -1984,7 +1974,7 @@ function ComboFormModal({ isOpen, combo, onClose, onSave, activeProviders, combo
   const [manualModelError, setManualModelError] = useState("");
   const [builderComboRefName, setBuilderComboRefName] = useState("");
   const [builderError, setBuilderError] = useState("");
-  const [builderStage, setBuilderStage] = useState<string>(COMBO_BUILDER_STAGES[0]);
+  const [builderStage, setBuilderStage] = useState<ComboBuilderStage>(COMBO_BUILDER_STAGES[0]);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [config, setConfig] = useState(sanitizeComboRuntimeConfig(combo?.config));
   const [showStrategyNudge, setShowStrategyNudge] = useState(false);

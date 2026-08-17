@@ -1,13 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+@import "material-symbols/outlined.css";
+
 /* Self-hosted Material Symbols icon font (#3695): the Google Fonts CDN
    (fonts.googleapis.com) is blocked in some networks (e.g. mainland China),
    which made every icon ligature fall back to its literal text name and broke
    the layout. Bundling the font locally removes that runtime CDN dependency.
    The bundled @font-face uses family "Material Symbols Outlined", matching the
    .material-symbols-outlined rule defined later in this file. */
-@import "material-symbols/outlined.css";
+
 @source "../../node_modules/fumadocs-ui/css/generated/*.css";
 
 /* Tailwind v4 auto-detection cannot scan directories with parentheses
@@ -25,208 +28,206 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ──────────────────────────────────────────────────────────────────────────
+   Sarathi Design System — shadcn/ui-inspired
+   Zinc neutrals · Violet accent · Sharp borders · Clean typography
+   ────────────────────────────────────────────────────────────────────────── */
+
+
 /* Fumadocs sidebar width override */
 :root {
   --fd-sidebar-width: 220px;
 }
 
-/* OpenClaw × ClawHub Color Palette */
 :root {
-  --desktop-safe-top: 0px;
-  --desktop-safe-bottom: 0px;
   color-scheme: light;
 
-  /* Primary - Violet/Purple */
-  --color-primary: #8b5cf6;
-  --color-primary-hover: #7c3aed;
+  --desktop-safe-top: 0px;
+  --desktop-safe-bottom: 0px;
 
-  /* Accent - Indigo/Violet (buttons, links, gradients) */
-  --color-accent: #6366f1;
-  --color-accent-hover: #8b5cf6;
-  --color-accent-light: #a855f7;
+  /* ── Brand Accent — Violet ── */
+  --color-primary:       #7c3aed;
+  --color-primary-hover: #6d28d9;
 
-  /* Semantic */
-  --color-error: #ef4444;
+  --color-accent:        #8b5cf6;
+  --color-accent-hover:  #7c3aed;
+  --color-accent-light:  #a78bfa;
+
+  /* ── Semantic ── */
+  --color-error:   #ef4444;
   --color-success: #22c55e;
   --color-warning: #f59e0b;
 
-  /* Traffic lights */
-  --color-traffic-red: #ff5f56;
+  /* ── Traffic lights ── */
+  --color-traffic-red:    #ff5f56;
   --color-traffic-yellow: #ffbd2e;
-  --color-traffic-green: #27c93f;
+  --color-traffic-green:  #27c93f;
 
-  /* Light theme */
-  --color-bg: #f9f9fb;
-  --color-bg-alt: #f0f0f5;
-  --color-bg-primary: #f9f9fb;
-  --color-bg-subtle: #f0f0f5;
-  --color-surface: #ffffff;
-  --color-card: #ffffff;
-  --color-sidebar: #f5f5fa;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-text-main: #1a1a2e;
-  --color-text-primary: #1a1a2e;
-  --color-text-muted: #71717a;
+  /* ── Light Theme — zinc-based, shadcn-style ── */
+  --color-bg:          #fafafa;
+  --color-bg-alt:      #f4f4f5;
+  --color-bg-primary:  #fafafa;
+  --color-bg-subtle:   #f4f4f5;
+  --color-surface:     #ffffff;
+  --color-card:        #ffffff;
+  --color-sidebar:     #f4f4f5;
+  --color-border:      #e4e4e7;
+  --color-text-main:   #09090b;
+  --color-text-primary:#09090b;
+  --color-text-muted:  #71717a;
 
-  /* Fumadocs light theme */
-  --color-fd-background: #f9f9fb;
-  --color-fd-foreground: #1a1a2e;
-  --color-fd-muted: #f0f0f5;
-  --color-fd-muted-foreground: #71717a;
-  --color-fd-popover: #ffffff;
-  --color-fd-popover-foreground: #1a1a2e;
-  --color-fd-card: #ffffff;
-  --color-fd-card-foreground: #1a1a2e;
-  --color-fd-border: rgba(0, 0, 0, 0.08);
-  --color-fd-primary: #8b5cf6;
+  /* ── Fumadocs light mapping ── */
+  --color-fd-background:         #fafafa;
+  --color-fd-foreground:         #09090b;
+  --color-fd-muted:              #f4f4f5;
+  --color-fd-muted-foreground:   #71717a;
+  --color-fd-popover:            #ffffff;
+  --color-fd-popover-foreground: #09090b;
+  --color-fd-card:               #ffffff;
+  --color-fd-card-foreground:    #09090b;
+  --color-fd-border:             #e4e4e7;
+  --color-fd-primary:            #7c3aed;
   --color-fd-primary-foreground: #ffffff;
-  --color-fd-secondary: #f0f0f5;
-  --color-fd-secondary-foreground: #1a1a2e;
-  --color-fd-accent: rgba(139, 92, 246, 0.08);
-  --color-fd-accent-foreground: #1a1a2e;
-  --color-fd-ring: #8b5cf6;
+  --color-fd-secondary:          #f4f4f5;
+  --color-fd-secondary-foreground: #09090b;
+  --color-fd-accent:             rgba(124, 58, 237, 0.08);
+  --color-fd-accent-foreground:  #09090b;
+  --color-fd-ring:               #7c3aed;
 
-  /* Shadows */
-  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.015);
-  --shadow-warm: 0 2px 12px -2px rgba(139, 92, 246, 0.12);
-  --shadow-elevated: 0 12px 28px -4px rgba(20, 20, 40, 0.06);
+  /* ── Shadows — crisp, minimal ── */
+  --shadow-soft:     0 1px 2px rgba(0,0,0,0.05);
+  --shadow-warm:     0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+  --shadow-elevated: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
 
-  /* Graph-paper wallpaper grid — shared visual identity with the marketing site
-     (_mono_repo/sarathiSite/css). Light theme values. Rendered by body::before.
-     Opacity tuned up from the site's 0.045 so the wallpaper is actually visible on
-     the dense dashboard (cards/chrome cover most of the viewport). */
-  --grid-line: rgba(0, 0, 0, 0.07);
-  --grid-size: 32px;
-  --section-alt: rgba(0, 0, 0, 0.022);
+  /* ── Grid wallpaper ── */
+  --grid-line:   rgba(0,0,0,0.05);
+  --grid-size:   32px;
+  --section-alt: rgba(0,0,0,0.015);
 
-  /* Identity tokens mirrored from the site. Definitions only in this phase —
-     components are repointed to them in a later phase. */
-  --surface-2: #f5f5fa;
-  --radius: 14px;
-  --radius-control: 9px;
-  --grad-brand: linear-gradient(135deg, var(--color-primary), var(--color-accent-light));
+  /* ── Shared identity tokens ── */
+  --surface-2:    #f4f4f5;
+  --radius:       8px;
+  --radius-control: 6px;
+  --grad-brand:   linear-gradient(135deg, var(--color-primary), var(--color-accent-light));
 
-  /* Data-table surfaces — theme-aware. The DARK values (in .dark below) exactly mirror
-     the previous hardcoded rgba in DataTable.tsx so dark stays byte-identical; these
-     light values are the fix (the old code was always-dark via dead var fallbacks). */
-  --table-header-bg: rgba(249, 249, 251, 0.95);
-  --table-row-zebra: rgba(0, 0, 0, 0.02);
-  --table-row-hover: rgba(0, 0, 0, 0.04);
-  --table-cell-border: rgba(0, 0, 0, 0.04);
-  /* Selected row — an accent tint that reads on both themes (inherited by .dark). */
-  --table-row-selected: rgba(99, 102, 241, 0.1);
+  /* ── Data-table surfaces ── */
+  --table-header-bg:    rgba(250,250,250,0.97);
+  --table-row-zebra:    rgba(0,0,0,0.015);
+  --table-row-hover:    rgba(0,0,0,0.035);
+  --table-cell-border:  rgba(0,0,0,0.04);
+  --table-row-selected: rgba(124, 58, 237, 0.08);
 }
 
 .dark {
-  /* Dark theme (ClawHub deep) */
   color-scheme: dark;
-  --color-bg: #0b0e14;
-  --color-bg-alt: #111520;
-  --color-bg-primary: #0b0e14;
-  --color-bg-subtle: #111520;
-  --color-surface: #161b22;
-  --color-card: #161b22;
-  --color-sidebar: #10141e;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-text-main: #e6e6ef;
-  --color-text-primary: #e6e6ef;
-  --color-text-muted: #a1a1aa;
 
-  /* Fumadocs theme mapping */
-  --color-fd-background: #0b0e14;
-  --color-fd-foreground: #e6e6ef;
-  --color-fd-muted: #111520;
-  --color-fd-muted-foreground: #a1a1aa;
-  --color-fd-popover: #161b22;
-  --color-fd-popover-foreground: #e6e6ef;
-  --color-fd-card: #161b22;
-  --color-fd-card-foreground: #e6e6ef;
-  --color-fd-border: rgba(255, 255, 255, 0.08);
-  --color-fd-primary: #8b5cf6;
+  /* ── Dark Theme — zinc-950 base, shadcn-style ── */
+  --color-bg:          #09090b;
+  --color-bg-alt:      #111113;
+  --color-bg-primary:  #09090b;
+  --color-bg-subtle:   #111113;
+  --color-surface:     #18181b;
+  --color-card:        #18181b;
+  --color-sidebar:     #0d0d0f;
+  --color-border:      #27272a;
+  --color-text-main:   #fafafa;
+  --color-text-primary:#fafafa;
+  --color-text-muted:  #71717a;
+
+  /* ── Fumadocs dark mapping ── */
+  --color-fd-background:         #09090b;
+  --color-fd-foreground:         #fafafa;
+  --color-fd-muted:              #111113;
+  --color-fd-muted-foreground:   #71717a;
+  --color-fd-popover:            #18181b;
+  --color-fd-popover-foreground: #fafafa;
+  --color-fd-card:               #18181b;
+  --color-fd-card-foreground:    #fafafa;
+  --color-fd-border:             #27272a;
+  --color-fd-primary:            #8b5cf6;
   --color-fd-primary-foreground: #ffffff;
-  --color-fd-secondary: #111520;
-  --color-fd-secondary-foreground: #e6e6ef;
-  --color-fd-accent: rgba(139, 92, 246, 0.12);
-  --color-fd-accent-foreground: #e6e6ef;
-  --color-fd-ring: #8b5cf6;
+  --color-fd-secondary:          #1c1c1f;
+  --color-fd-secondary-foreground: #fafafa;
+  --color-fd-accent:             rgba(139, 92, 246, 0.12);
+  --color-fd-accent-foreground:  #fafafa;
+  --color-fd-ring:               #8b5cf6;
 
-  /* Dark shadows */
-  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-warm: 0 2px 12px -2px rgba(139, 92, 246, 0.15);
-  --shadow-elevated: 0 12px 28px -4px rgba(0, 0, 0, 0.3);
+  /* ── Shadows — dark ── */
+  --shadow-soft:     0 1px 3px rgba(0,0,0,0.4);
+  --shadow-warm:     0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.3);
+  --shadow-elevated: 0 10px 25px -3px rgba(0,0,0,0.6), 0 4px 10px -4px rgba(0,0,0,0.4);
 
-  /* Graph-paper wallpaper grid — dark theme values (tuned up from 0.035 for visibility). */
-  --grid-line: rgba(255, 255, 255, 0.06);
-  --section-alt: rgba(255, 255, 255, 0.018);
-  --surface-2: #1c2230;
+  /* ── Grid wallpaper dark ── */
+  --grid-line:   rgba(255,255,255,0.04);
+  --section-alt: rgba(255,255,255,0.012);
+  --surface-2:   #1c1c1f;
 
-  /* Data-table surfaces — dark = the exact old hardcoded values (byte-identical). */
-  --table-header-bg: rgba(15, 15, 25, 0.95);
-  --table-row-zebra: rgba(255, 255, 255, 0.02);
-  --table-row-hover: rgba(255, 255, 255, 0.04);
-  --table-cell-border: rgba(255, 255, 255, 0.04);
+  /* ── Data-table surfaces dark ── */
+  --table-header-bg:   rgba(9,9,11,0.97);
+  --table-row-zebra:   rgba(255,255,255,0.018);
+  --table-row-hover:   rgba(255,255,255,0.035);
+  --table-cell-border: rgba(255,255,255,0.04);
 }
 
 @theme inline {
   /* Primary */
-  --color-primary: var(--color-primary);
+  --color-primary:       var(--color-primary);
   --color-primary-hover: var(--color-primary-hover);
 
   /* Accent */
-  --color-accent: var(--color-accent);
+  --color-accent:       var(--color-accent);
   --color-accent-hover: var(--color-accent-hover);
   --color-accent-light: var(--color-accent-light);
 
   /* Semantic */
-  --color-error: var(--color-error);
+  --color-error:   var(--color-error);
   --color-success: var(--color-success);
   --color-warning: var(--color-warning);
 
-  /* Auto-switch colors (use CSS variables from :root/.dark) */
-  --color-bg: var(--color-bg);
-  --color-bg-primary: var(--color-bg-primary);
-  --color-bg-subtle: var(--color-bg-subtle);
-  --color-surface: var(--color-surface);
-  --color-card: var(--color-card);
-  --color-sidebar: var(--color-sidebar);
-  --color-border: var(--color-border);
-  --color-text-main: var(--color-text-main);
-  --color-text-primary: var(--color-text-primary);
-  --color-text-muted: var(--color-text-muted);
+  /* Auto-switch colors */
+  --color-bg:          var(--color-bg);
+  --color-bg-primary:  var(--color-bg-primary);
+  --color-bg-subtle:   var(--color-bg-subtle);
+  --color-surface:     var(--color-surface);
+  --color-card:        var(--color-card);
+  --color-sidebar:     var(--color-sidebar);
+  --color-border:      var(--color-border);
+  --color-text-main:   var(--color-text-main);
+  --color-text-primary:var(--color-text-primary);
+  --color-text-muted:  var(--color-text-muted);
 
-  /* Static colors (for explicit light/dark usage) */
-  --color-bg-light: #f9f9fb;
-  --color-bg-dark: #0b0e14;
+  /* Static colors */
+  --color-bg-light:      #fafafa;
+  --color-bg-dark:       #09090b;
   --color-surface-light: #ffffff;
-  --color-surface-dark: #161b22;
-  --color-sidebar-light: #ededf2;
-  --color-sidebar-dark: #111520;
-  --color-border-light: #e2e2ea;
-  --color-border-dark: #2d333b;
-  --color-text-main-light: #1a1a2e;
-  --color-text-main-dark: #e6e6ef;
+  --color-surface-dark:  #18181b;
+  --color-sidebar-light: #f4f4f5;
+  --color-sidebar-dark:  #0d0d0f;
+  --color-border-light:  #e4e4e7;
+  --color-border-dark:   #27272a;
+  --color-text-main-light:  #09090b;
+  --color-text-main-dark:   #fafafa;
   --color-text-muted-light: #71717a;
-  --color-text-muted-dark: #a1a1aa;
+  --color-text-muted-dark:  #71717a;
 
   /* Shadows */
-  --shadow-soft: var(--shadow-soft);
-  --shadow-warm: var(--shadow-warm);
+  --shadow-soft:     var(--shadow-soft);
+  --shadow-warm:     var(--shadow-warm);
   --shadow-elevated: var(--shadow-elevated);
 
-  /* Font - macOS system fonts */
-  --font-sans:
-    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
-  /* Monospace stack (parity with the site) — code blocks, IDs, endpoints, terminals */
-  --font-mono: ui-monospace, "JetBrains Mono", "Fira Code", "SF Mono", monospace;
+  /* Font — Inter with system fallback */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", monospace;
 
-  /* Nested surface (enables bg-surface-2) */
+  /* Nested surface */
   --color-surface-2: var(--surface-2);
 
-  /* Semantic radius scale → rounded-card (surfaces, 14px) / rounded-control (controls,
-     9px). Custom names so the default rounded-sm/md/lg/xl utilities stay untouched. */
-  --radius-card: var(--radius);
+  /* Radius scale */
+  --radius-card:    var(--radius);
   --radius-control: var(--radius-control);
 }
+
+
 
 /* ── Focus Indicators (U-3) ── */
 :root {
@@ -257,8 +258,12 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text-main);
   font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11", "ss01";
 }
 
 
@@ -268,10 +273,9 @@ body.electron-macos {
   --desktop-safe-bottom: 8px;
 }
 
-/* Selection — with fallback for browsers that don't support color-mix() */
+/* Selection */
 ::selection {
-  background-color: rgba(229, 77, 94, 0.22);
-  background-color: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
   color: var(--color-primary);
 }
 
@@ -578,3 +582,125 @@ html[dir="rtl"] .-translate-x-1\/2 { translate: 50% var(--tw-translate-y); }
 @media (min-width: 48rem) { html[dir="rtl"] .md\:ml-2 { margin-left: 0; margin-inline-start: calc(var(--spacing) * 2); } html[dir="rtl"] .md\:ml-auto { margin-left: 0; margin-inline-start: auto; } html[dir="rtl"] .md\:pl-6 { padding-left: 0; padding-inline-start: calc(var(--spacing) * 6); } }
 html[dir="rtl"] :where(code, pre, kbd, samp, input[type="email"], input[type="url"]) { direction: ltr; text-align: left; }
 html[dir="rtl"] :where(.material-symbols-outlined, .traffic-lights, .react-flow) { direction: ltr; }
+
+/* ═══════════════════════════════════════════════════════════════
+   shadcn/ui-inspired Component Utilities
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Card — clean border + subtle bg ── */
+.ui-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ui-card:hover {
+  box-shadow: var(--shadow-warm);
+  border-color: color-mix(in srgb, var(--color-border) 60%, var(--color-primary) 40%);
+}
+
+/* ── Badge variants ── */
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  border: 1px solid transparent;
+}
+.ui-badge-default {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+.ui-badge-primary {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+.ui-badge-success {
+  background: color-mix(in srgb, var(--color-success) 10%, transparent);
+  color: var(--color-success);
+  border-color: color-mix(in srgb, var(--color-success) 25%, transparent);
+}
+.ui-badge-warning {
+  background: color-mix(in srgb, var(--color-warning) 10%, transparent);
+  color: var(--color-warning);
+  border-color: color-mix(in srgb, var(--color-warning) 25%, transparent);
+}
+.ui-badge-error {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error);
+  border-color: color-mix(in srgb, var(--color-error) 25%, transparent);
+}
+
+/* ── Sidebar refinements — sharper, zinc-style ── */
+.sidebar-item {
+  border-radius: 6px;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+.sidebar-item:hover {
+  background-color: color-mix(in srgb, var(--color-text-main) 6%, transparent);
+}
+.sidebar-item.active {
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  color: var(--color-primary);
+}
+
+/* ── Section divider ── */
+.ui-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+}
+
+/* ── Muted section label — shadcn style ── */
+.ui-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── Code / mono label — used in endpoint display ── */
+.ui-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* ── Smooth page transitions ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.2s ease forwards;
+}
+
+/* ── Status dot ── */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot-online  { background-color: var(--color-success); }
+.status-dot-warning { background-color: var(--color-warning); }
+.status-dot-offline { background-color: var(--color-text-muted); }
+.status-dot-error   { background-color: var(--color-error); }
+

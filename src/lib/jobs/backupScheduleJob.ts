@@ -9,8 +9,7 @@ import { matchesCron } from "@/lib/jobs/cronMatch";
 // algorithmically identical to `src/lib/dataPaths.ts`'s server-side resolver
 // (same DATA_DIR/XDG/legacy-dir precedence) — both agree on where
 // `backup-schedule.json` lives.
-import { runBackupCommand } from "../../../bin/cli/commands/backup.mjs";
-import { resolveDataDir } from "../../../bin/cli/data-dir.mjs";
+import { resolveDataDir } from "@/lib/dataPaths";
 
 const DEFAULT_INTERVAL_MS = 30 * 1000;
 
@@ -99,6 +98,7 @@ export async function runBackupScheduleTick(now: Date = new Date()): Promise<boo
 
   writeLastRunAt(schedule, now);
   try {
+    const { runBackupCommand } = await import("../../../bin/cli/commands/backup.mjs");
     await runBackupCommand({
       cloud: !!schedule.cloud,
       encrypt: !!schedule.encrypt,

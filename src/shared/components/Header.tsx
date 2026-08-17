@@ -93,7 +93,6 @@ const HEADER_DESCRIPTIONS: Partial<Record<HideableSidebarItemId | "omni-skills",
   "audit-mcp": "auditMcpDescription",
   // Settings sub-pages
   "settings-general": "settingsGeneralDescription",
-  "settings-appearance": "settingsAppearanceDescription",
   "settings-ai": "settingsAiDescription",
   "settings-security": "settingsSecurityDescription",
   "settings-routing": "settingsRoutingDescription",

@@ -25,10 +25,7 @@ export const KIMI_SPONSOR_BANNER_THROUGH_VERSION = "3.8.60";
  * show" for a value like the `"unknown"` sentinel `getCurrentVersion()` can
  * return if `package.json` cannot be read.
  */
-export function shouldShowKimiSponsorBanner(currentVersion: string | null | undefined): boolean {
-  if (typeof currentVersion !== "string") return false;
-  if (!normalizeVersion(currentVersion)) return false;
-  // isNewer(a, b) is true iff a > b — so isNewer(current, THROUGH) is true
-  // exactly when current is past the sunset version. Negate for "<=".
-  return !isNewer(currentVersion, KIMI_SPONSOR_BANNER_THROUGH_VERSION);
+export function shouldShowKimiSponsorBanner(_currentVersion: string | null | undefined): boolean {
+  // Kimi partnership display removed — always hidden.
+  return false;
 }
