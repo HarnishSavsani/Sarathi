@@ -29,6 +29,7 @@ import {
   getSectionItems,
   type SidebarItemDefinition,
   type HideableSidebarItemId,
+  type SidebarItemId,
 } from "@/shared/constants/sidebarVisibility";
 import { useIsElectron } from "@/shared/hooks/useElectron";
 
@@ -36,7 +37,9 @@ const isE2EMode = process.env.NEXT_PUBLIC_SARATHI_E2E_MODE === "1";
 
 // Map sidebar item id → header description i18n key
 // "omni-skills" is an extended key for the /dashboard/omni-skills route (graceful fallback during deploy)
-const HEADER_DESCRIPTIONS: Partial<Record<HideableSidebarItemId | "omni-skills", string>> = {
+const HEADER_DESCRIPTIONS: Partial<
+  Record<SidebarItemId | "omni-skills" | "settings" | "changelog", string>
+> = {
   home: "homeDescription",
   endpoints: "endpointDescription",
   "api-manager": "apiManagerDescription",

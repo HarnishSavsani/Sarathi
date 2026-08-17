@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono&display=swap");
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
@@ -51,11 +51,11 @@
 
   --color-accent:        #8b5cf6;
   --color-accent-hover:  #7c3aed;
-  --color-accent-light:  #a78bfa;
+  --color-accent-light:  #c084fc;
 
   /* ── Semantic ── */
   --color-error:   #ef4444;
-  --color-success: #22c55e;
+  --color-success: #10b981;
   --color-warning: #f59e0b;
 
   /* ── Traffic lights ── */
@@ -64,22 +64,22 @@
   --color-traffic-green:  #27c93f;
 
   /* ── Light Theme — zinc-based, shadcn-style ── */
-  --color-bg:          #fafafa;
-  --color-bg-alt:      #f4f4f5;
-  --color-bg-primary:  #fafafa;
-  --color-bg-subtle:   #f4f4f5;
+  --color-bg:          #ffffff;
+  --color-bg-alt:      #fafafa;
+  --color-bg-primary:  #ffffff;
+  --color-bg-subtle:   #fafafa;
   --color-surface:     #ffffff;
   --color-card:        #ffffff;
-  --color-sidebar:     #f4f4f5;
+  --color-sidebar:     #fafafa;
   --color-border:      #e4e4e7;
   --color-text-main:   #09090b;
   --color-text-primary:#09090b;
   --color-text-muted:  #71717a;
 
   /* ── Fumadocs light mapping ── */
-  --color-fd-background:         #fafafa;
+  --color-fd-background:         #ffffff;
   --color-fd-foreground:         #09090b;
-  --color-fd-muted:              #f4f4f5;
+  --color-fd-muted:              #fafafa;
   --color-fd-muted-foreground:   #71717a;
   --color-fd-popover:            #ffffff;
   --color-fd-popover-foreground: #09090b;
@@ -88,34 +88,34 @@
   --color-fd-border:             #e4e4e7;
   --color-fd-primary:            #7c3aed;
   --color-fd-primary-foreground: #ffffff;
-  --color-fd-secondary:          #f4f4f5;
+  --color-fd-secondary:          #fafafa;
   --color-fd-secondary-foreground: #09090b;
-  --color-fd-accent:             rgba(124, 58, 237, 0.08);
+  --color-fd-accent:             rgba(124, 58, 237, 0.06);
   --color-fd-accent-foreground:  #09090b;
   --color-fd-ring:               #7c3aed;
 
-  /* ── Shadows — crisp, minimal ── */
-  --shadow-soft:     0 1px 2px rgba(0,0,0,0.05);
-  --shadow-warm:     0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-  --shadow-elevated: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+  /* ── Shadows ── */
+  --shadow-soft:     0 1px 2px rgba(0,0,0,0.04);
+  --shadow-warm:     0 2px 4px rgba(0,0,0,0.04);
+  --shadow-elevated: 0 8px 16px rgba(0,0,0,0.06);
 
   /* ── Grid wallpaper ── */
-  --grid-line:   rgba(0,0,0,0.05);
+  --grid-line:   transparent;
   --grid-size:   32px;
-  --section-alt: rgba(0,0,0,0.015);
+  --section-alt: rgba(0,0,0,0.01);
 
   /* ── Shared identity tokens ── */
-  --surface-2:    #f4f4f5;
-  --radius:       8px;
+  --surface-2:    #fafafa;
+  --radius:       6px;
   --radius-control: 6px;
-  --grad-brand:   linear-gradient(135deg, var(--color-primary), var(--color-accent-light));
+  --grad-brand:   linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary) 100%);
 
   /* ── Data-table surfaces ── */
-  --table-header-bg:    rgba(250,250,250,0.97);
-  --table-row-zebra:    rgba(0,0,0,0.015);
-  --table-row-hover:    rgba(0,0,0,0.035);
-  --table-cell-border:  rgba(0,0,0,0.04);
-  --table-row-selected: rgba(124, 58, 237, 0.08);
+  --table-header-bg:    rgba(255,255,255,0.98);
+  --table-row-zebra:    rgba(0,0,0,0.01);
+  --table-row-hover:    rgba(0,0,0,0.02);
+  --table-cell-border:  rgba(0,0,0,0.03);
+  --table-row-selected: rgba(124, 58, 237, 0.05);
 }
 
 .dark {
@@ -123,50 +123,50 @@
 
   /* ── Dark Theme — zinc-950 base, shadcn-style ── */
   --color-bg:          #09090b;
-  --color-bg-alt:      #111113;
+  --color-bg-alt:      #09090b;
   --color-bg-primary:  #09090b;
-  --color-bg-subtle:   #111113;
-  --color-surface:     #18181b;
-  --color-card:        #18181b;
-  --color-sidebar:     #0d0d0f;
+  --color-bg-subtle:   #09090b;
+  --color-surface:     #09090b;
+  --color-card:        #09090b;
+  --color-sidebar:     #09090b;
   --color-border:      #27272a;
   --color-text-main:   #fafafa;
   --color-text-primary:#fafafa;
-  --color-text-muted:  #71717a;
+  --color-text-muted:  #a1a1aa;
 
   /* ── Fumadocs dark mapping ── */
   --color-fd-background:         #09090b;
   --color-fd-foreground:         #fafafa;
-  --color-fd-muted:              #111113;
-  --color-fd-muted-foreground:   #71717a;
-  --color-fd-popover:            #18181b;
+  --color-fd-muted:              #09090b;
+  --color-fd-muted-foreground:   #a1a1aa;
+  --color-fd-popover:            #09090b;
   --color-fd-popover-foreground: #fafafa;
-  --color-fd-card:               #18181b;
+  --color-fd-card:               #09090b;
   --color-fd-card-foreground:    #fafafa;
   --color-fd-border:             #27272a;
   --color-fd-primary:            #8b5cf6;
   --color-fd-primary-foreground: #ffffff;
-  --color-fd-secondary:          #1c1c1f;
+  --color-fd-secondary:          #09090b;
   --color-fd-secondary-foreground: #fafafa;
-  --color-fd-accent:             rgba(139, 92, 246, 0.12);
+  --color-fd-accent:             rgba(139, 92, 246, 0.08);
   --color-fd-accent-foreground:  #fafafa;
   --color-fd-ring:               #8b5cf6;
 
   /* ── Shadows — dark ── */
-  --shadow-soft:     0 1px 3px rgba(0,0,0,0.4);
-  --shadow-warm:     0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.3);
-  --shadow-elevated: 0 10px 25px -3px rgba(0,0,0,0.6), 0 4px 10px -4px rgba(0,0,0,0.4);
+  --shadow-soft:     0 1px 2px rgba(0,0,0,0.5);
+  --shadow-warm:     0 2px 4px rgba(0,0,0,0.5);
+  --shadow-elevated: 0 8px 16px rgba(0,0,0,0.6);
 
   /* ── Grid wallpaper dark ── */
-  --grid-line:   rgba(255,255,255,0.04);
-  --section-alt: rgba(255,255,255,0.012);
-  --surface-2:   #1c1c1f;
+  --grid-line:   transparent;
+  --section-alt: rgba(255,255,255,0.01);
+  --surface-2:   #18181b;
 
   /* ── Data-table surfaces dark ── */
-  --table-header-bg:   rgba(9,9,11,0.97);
-  --table-row-zebra:   rgba(255,255,255,0.018);
-  --table-row-hover:   rgba(255,255,255,0.035);
-  --table-cell-border: rgba(255,255,255,0.04);
+  --table-header-bg:   rgba(9,9,11,0.98);
+  --table-row-zebra:   rgba(255,255,255,0.01);
+  --table-row-hover:   rgba(255,255,255,0.02);
+  --table-cell-border: rgba(255,255,255,0.03);
 }
 
 @theme inline {
@@ -215,9 +215,9 @@
   --shadow-warm:     var(--shadow-warm);
   --shadow-elevated: var(--shadow-elevated);
 
-  /* Font — Inter with system fallback */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", monospace;
+  /* Font — Geist with system fallback */
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", monospace;
 
   /* Nested surface */
   --color-surface-2: var(--surface-2);

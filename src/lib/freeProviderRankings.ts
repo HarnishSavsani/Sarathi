@@ -59,7 +59,7 @@ function getFreeProviders() {
   }> = [];
 
   // No-auth providers are always free
-  for (const [id, p] of Object.entries(NOAUTH_PROVIDERS)) {
+  for (const [id, p] of Object.entries(NOAUTH_PROVIDERS as Record<string, any>)) {
     providers.push({
       id,
       name: p.name,
